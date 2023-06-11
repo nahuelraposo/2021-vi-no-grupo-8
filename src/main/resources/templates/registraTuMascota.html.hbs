@@ -1,0 +1,83 @@
+{{# partial "titulo"}}
+    <title>Rescate de Patitas - Registrá tu mascota</title>
+{{/partial}}
+
+{{# partial "main"}}
+    <div class="container mt-5 mb-5">
+        <h1 class="text-center mb-4 mt-2">Registrá a tu mascota</h1>
+        <form method="POST" action="/mascotas">
+            <div class="container">
+                <div class="row g-3">
+                    <div class="col-sm-7">
+                        <input name="nombre" type="text" class="form-control" placeholder="Nombre" aria-label="Nombre">
+                    </div>
+                    <div class="col-sm">
+                        <input name="apodo" type="text" class="form-control" placeholder="Apodo" aria-label="Apodo">
+                    </div>
+                </div>
+                <div class="row g-3 mt-2 mb-2">
+                    <div class="col-md-4">
+                        <select name="tipo" class="form-select">
+                            <option selected disabled>Tipo de mascota...</option>
+                            <option value="GATO">Gato</option>
+                            <option value="PERRO">Perro</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="sexo" id="sexoMascota" class="form-select">
+                            <option selected disabled>Sexo...</option>
+                            <option value="MASCULINO">Masculino</option>
+                            <option value="FEMENINO">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="tamanio" id="tamanioMascota" class="form-select">
+                            <option selected disabled>Tamaño...</option>
+                            <option value="GRANDE">Grande</option>
+                            <option value="MEDIANA">Mediana</option>
+                            <option value="CHICA">Chica</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row g-3 mt-2 mb-2">
+                    <div class="col-md-3">
+                        <input name="edad" class="form-control" type="text" id="mascotaEdad" placeholder="Edad">
+                    </div>
+                    <div class="col-md-9">
+                        <input name="imagen" class="form-control" type="file" id="mascotaFoto" placeholder="Ingrese una foto de la mascota">
+                    </div>
+                </div>
+                <div class="row g-3 mt-2 mb-2">
+                    <div class="col-md-12">
+                        <textarea name="descripcionGeneral" class="form-control" id="descripcionMascota" rows="3" placeholder="Descripción sobre la mascota que desee agregar"></textarea>
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-2 mb-2">
+                {{#each caracteristicasIdeales}}
+                    <div class="col-md-4">
+                        <label class="col-form-label">{{descripcion}}</label>
+                        {{#if valoresPosibles}}
+                        <select name ="{{descripcion}}" class="form-select" required>
+                            <option selected disabled value="">Seleccione una...</option>
+                            {{#each valoresPosibles}}
+                                <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </select>
+                        {{else}}
+                        <input type="text" class="form-control" placeholder="{{descripcion}}" name="{{descripcion}}" required>
+                        {{/if}}
+                    </div>
+                {{/each}}
+                </div>
+
+                <div class="row g-3 mt-5 mb-2 justify-content-end">
+                    <button class="btn btn-danger btn-lg" type="submit">Guardar mascota</button>
+                    <a href="/" class="btn btn-outline-secondary btn-lg">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+{{/partial}}
+
+{{> layout.html.hbs }}

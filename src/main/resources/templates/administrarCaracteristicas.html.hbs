@@ -1,0 +1,51 @@
+{{# partial "titulo"}}
+    <title>Rescate de Patitas - Administrar caracteristicas</title>
+{{/partial}}
+
+{{#partial "main"}}
+    <h1 class="text-center">Caracteristicas</h1>
+    <div class="container mb-5 mt-5">
+        <form method="POST" action="/caracteristicas">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input name="descripcion" type="text" class="form-control" placeholder="Descripcion" aria-label="Descripcion">
+                    </div>
+                    <div class="col-md-6">
+                        <select name="tipo" id="tipo" class="form-select" onchange="showDiv(this)">
+                            <option selected disabled>Tipo de caracteristica...</option>
+                            <option value="BOOLEANA">Booleana</option>
+                            <option value="STRING">String</option>
+                            <option value="TEXTOLIBRE">Texto libre</option>
+                            <option value="NUMERICA">Numerica</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-5 mt-5" id="hidden_div">
+                    <div class="row">
+                        <h5>Ingrese los valores posibles separados por coma</h5>
+                    </div>
+                    <div class="row mt-5">
+                        <textarea name="valoresPosibles" type="text" class="form-control" placeholder="valor1,valor2,valor3" aria-label="valoresPosibles" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="row mt-5 mb-2 justify-content-end">
+                    <button class="btn btn-danger btn-lg" type="submit">Agregar caracteristica</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+<script>
+    function showDiv(select){
+        if(select.value=="STRING" || select.value=="NUMERICA"){
+            document.getElementById('hidden_div').style.display = "block";
+        } else{
+            document.getElementById('hidden_div').style.display = "none";
+        }
+    }
+</script>
+{{/partial}}
+
+{{> layout.html.hbs }}
+

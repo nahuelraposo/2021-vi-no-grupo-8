@@ -1,0 +1,33 @@
+{{# partial "titulo"}}
+    <title>Rescate de Patitas - Mis mascotas</title>
+{{/partial}}
+
+{{# partial "main"}}
+    <div class ="container mt-5 mb-5">
+        <h1 class="text-center mb-4 mt-2">Mis mascotas</h1>
+        <div class="row g-3 mt-2 mb-2">
+        {{#each mascotas}}
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    {{#each fotos}}
+                    <img src="{{this}}" class="card-img-top" alt="...">
+                    {{/each}}
+                    <div class="card-body">
+                        <h5 class="card-title">{{nombre}}</h5>
+                        <p class="card-text">Características</p>
+                        <ul>
+                            <li>Apodo: {{apodo}}</li>
+                            <li>Sexo: {{sexo}}</li>
+                            <li>Tamaño: {{tamanioMascota}}</li>
+                            <li>Descripción: {{descripcionFisica}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+
+{{/partial}}
+
+{{> layout.html.hbs }}

@@ -1,0 +1,129 @@
+{{# partial "titulo"}}
+    <title>Rescate de Patitas - Home</title>
+{{/partial}}
+
+{{# partial "main"}}
+    <div style="position: relative;">
+        <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://estaticos-cdn.prensaiberica.es/clip/05d20bb5-f64d-4cbe-a607-149bed3d7f7f_16-9-aspect-ratio_default_0.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.abcperros.com/wp-content/uploads/2019/11/29990/por-que-enviar-tu-cachorro-a-clases-de-entrenamiento-para-cachorros.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.seguroweb.com.ar/wp-content/uploads/2015/12/seguro-para-mascotas-portada-SeguroWeb.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <a class="carousel-control-prev" role="button" data-bs-target="#carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" role="button" data-bs-target="#carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+    </div>
+    {{#if sesionIniciada}}
+    {{else}}
+        <div class="row" style="position: absolute; left: 100px; top: 110px;">
+            <div class="col-6">
+            </div>
+            <div class="col-6" id="containerRegistro">
+                <div class="container mt-4 mb-2">
+                    <h2 class="text-center">Registrate para acceder al sitio</h2>
+                    <br>
+                    <form id="formRegistro" class="row g-3 needs-validation" action="/usuarios" method="POST" novalidate>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Nombre</label>
+                            <input name="firstName" type="text" class="form-control"
+                                   aria-describedby="inputGroupPrepend">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Apellido</label>
+                            <input name="lastName" type="text" class="form-control"
+                                   aria-describedby="inputGroupPrepend">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="validationCustom02" class="col-form-label">Fecha de nacimiento</label>
+                            <input id="personafecha" type="date" class="form-control" aria-label="Fecha de nacimiento" name="fechaNacimiento" aria-describedby="inputGroupPrepend">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="validationCustom02" class="col-form-label">Tipo documento</label>
+                            <select id="tipodocumento" class="form-select" name="tipoDocumento">
+                                <option selected value="DNI">DNI</option>
+                                <option value="LC">LC</option>
+                                <option value="LR">LR</option>
+                                <option value="PASAPORTE">Pasaporte</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom02" class="col-form-label">Num de documento</label>
+                            <input id="numerodocumento" name="numeroDocumento" type="text" class="form-control" placeholder="23456123" aria-label="Número de documento" aria-describedby="inputGroupPrepend">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Email</label>
+                            <input name="email" type="email" class="form-control" placeholder="ejemplo@email.com" aria-describedby="inputGroupPrepend" required>
+                            <div class="valid-feedback">Válido!</div>
+                            <div class="invalid-feedback">Complete el campo.</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Nueva contraseña</label>
+                            <input name="password" type="password" class="form-control" placeholder="******" aria-describedby="inputGroupPrepend" required>
+                            <div class="valid-feedback">Válido!</div>
+                            <div class="invalid-feedback">Complete el campo.</div>
+                        </div>
+                        <div class="col-md-12">
+                            <h5 class="mt-1">Datos de contacto:</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Email</label>
+                            <input type="email" class="form-control" placeholder="mail@ejemplo.com" aria-label="Email" name="mailContacto">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationCustom02" class="form-label">Teléfono</label>
+                            <input type="phone" class="form-control" placeholder="1166889977" aria-label="Phone" name="telefonoContacto">
+                        </div>
+                        <button class="btn btn-danger mt-5" type="sumbit" id="botonSignUp">Registrarse</button>
+                        <button class="btn btn-secondary" type="button" data-bs-toggle="modal" data-bs-target="#modalLogin">¿Ya estás registrado? Iniciar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+{{/partial}}
+
+  <div class="modal fade" tabindex="-1" id="modalLogin">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title w-100 text-center">Ingrese sus credenciales</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formInicioSesion" class="row g-3 needs-validation" action="/login" method="POST" novalidate>
+            <div class="col-md-6">
+              <label for="validationCustom02" class="form-label">Email</label>
+              <input name="email" type="email" class="form-control" id="emailLogueo" placeholder="ejemplo@email.com"
+                aria-describedby="inputGroupPrepend" required>
+              <div class="valid-feedback">Válido!</div>
+              <div class="invalid-feedback">Complete el campo.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="validationCustom02" class="form-label">Contraseña</label>
+              <input name="password" type="password" class="form-control" id="passwordLogueo"
+                aria-describedby="inputGroupPrepend"  placeholder="******" required>
+              <div class="valid-feedback">Válido!</div>
+              <div class="invalid-feedback">Complete el campo.</div>
+            </div>
+            <button class="btn btn-danger" type="sumbit" id="botonSignIn">Iniciar sesión</button>
+          </form>
+            <a class="modal-footer justify-content-center" href="#">Olvidé mi contraseña</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{> layout.html.hbs }}

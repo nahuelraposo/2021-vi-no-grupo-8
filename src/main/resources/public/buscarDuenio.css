@@ -1,0 +1,17 @@
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 10vh;
+}
+
+.form-control {
+    position: center;
+    width: 450px;
+}
+
+
+
+
+
+

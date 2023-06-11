@@ -1,0 +1,95 @@
+{{# partial "titulo"}}
+    <title>Rescate de Patitas - Mascotas Perdidas</title>
+{{/partial}}
+
+{{# partial "main"}}
+    <div class ="container mt-5 mb-2">
+        <div class="row g-3 align-items-center">
+            <form class="d-flex">
+                <div class="col">
+                    <input class="form-control me-2" type="search" placeholder="Lugar" aria-label="Buscar">
+                </div>
+                <div class="col">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Tipo de Mascota</option>
+                        <option value="1">Gato</option>
+                        <option value="2">Perro</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Tamaño</option>
+                        <option value="1">Pequeño</option>
+                        <option value="2">Mediano</option>
+                        <option value="2">Grande</option>
+                    </select>
+                </div>
+                <button class="btn btn-outline-danger" type="submit">Buscar</button>
+            </form>
+        </div>
+
+        <div class="row g-3 mt-2 mb-5">
+        {{#each mascotasPerdidas}}
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                   {{#each fotos}}
+                    <img src="{{this}}" class="card-img-top" alt="...">
+                   {{/each}}
+                    <div class="card-body">
+                        <h5 class="card-title">{{lugarEncuentro.direccion}}</h5>
+                        <p class="card-text">{{tipo}} Perdido:</p>
+                        <ul>
+                            <li>Sexo: Femenino</li>
+                            <li>Tamaño: {{tamanio}}</li>
+                            <li>Descripción: {{descripcionEstado}}</li>
+                            <li>Caracteristicas:
+                                <ul>
+                                {{#caracteristicas}}
+                                <li>{{this}}</li>
+                                {{/caracteristicas}}
+                                <ul>
+                            </li>
+                        </ul>
+                    <a href="#" class="btn btn-lg btn-danger mt-2">Es mi mascota</a>
+                    </div>
+                </div>
+            </div>
+           <!-- <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://www.europeandailynews.org/wp-content/uploads/2019/09/perro-animal-vertebrado.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Palermo, Buenos Aires</h5>
+                        <p class="card-text">Perro Perdido:</p>
+                        <ul>
+                            <li>Sexo: Masculino</li>
+                            <li>Tamaño: Pequeño</li>
+                            <li>Descripción: Fue encontrado en la vía pública</li>
+                        </ul>
+                        <a href="#" class="btn btn-lg btn-danger">Es mi mascota</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://www.significados-nombres.com/wp-content/uploads/2017/10/perro-hembra-grande.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">San Martín, Buenos Aires</h5>
+                        <p class="card-text">Perro Perdido:</p>
+                        <ul>
+                            <li>Sexo: Femenino</li>
+                            <li>Tamaño: Grande</li>
+                            <li>Descripción: Fue encontrado en la vía pública</li>
+                        </ul>
+                        <a href="#" class="btn btn-lg btn-danger">Es mi mascota</a>
+                    </div>
+                </div>
+            </div>-->
+        {{/each}}
+        </div>
+
+    </div>
+
+{{/partial}}
+
+{{> layout.html.hbs }}
+
